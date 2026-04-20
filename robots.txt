@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://drghiasattar.com/sitemap.xml
+Sitemap: https://www.drghiasattar.com/sitemap.xml
