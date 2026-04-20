@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dr-ghayath-site.lovable.app/sitemap.xml

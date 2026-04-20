@@ -1,0 +1,450 @@
+/* Dr. Ghias Attar — static site styles */
+:root {
+  --bg: hsl(40 30% 97%);
+  --bg-soft: hsl(40 35% 94%);
+  --card: hsl(40 30% 99%);
+  --ink: hsl(30 15% 12%);
+  --muted: hsl(30 10% 38%);
+  --primary: hsl(38 60% 42%);
+  --primary-soft: hsl(38 70% 55%);
+  --border: hsl(38 25% 82%);
+  --shadow: 0 30px 60px -20px rgba(150, 110, 30, 0.25);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: transparent;
+  color: var(--ink);
+  font-family: 'Tajawal', 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+html[lang="en"] body {
+  font-family: 'Inter', 'Tajawal', system-ui, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Tajawal', serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+html[lang="en"] h1, html[lang="en"] h2, html[lang="en"] h3, html[lang="en"] h4 {
+  font-family: 'Cormorant Garamond', 'Tajawal', serif;
+  font-weight: 500;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.gold-divider {
+  display: block;
+  height: 1px;
+  width: 64px;
+  background: var(--primary);
+  opacity: 0.7;
+  margin: 1.5rem 0;
+}
+
+.center .gold-divider { margin-left: auto; margin-right: auto; }
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn-primary { background: var(--primary); color: var(--bg); }
+.btn-primary:hover { background: var(--primary-soft); color: var(--ink); }
+.btn-outline { border-color: var(--primary); color: var(--primary); background: rgba(255,255,255,0.5); }
+.btn-outline:hover { background: var(--primary); color: var(--bg); }
+
+.btn svg { width: 1.1rem; height: 1.1rem; }
+
+/* Header */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  background: hsla(40, 30%, 97%, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid hsla(38, 60%, 42%, 0.15);
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.brand { font-size: 1.05rem; font-weight: 700; color: var(--primary); }
+.header-actions { display: flex; align-items: center; gap: 0.75rem; }
+.header-phone { display: none; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--ink); }
+.header-phone:hover { color: var(--primary); }
+.btn-sm { padding: 0.55rem 1rem; font-size: 0.875rem; }
+.lang-toggle {
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.8rem;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  color: var(--ink);
+  background: transparent;
+}
+.lang-toggle:hover { border-color: var(--primary); color: var(--primary); }
+
+@media (min-width: 640px) { .header-phone { display: inline-flex; } }
+
+/* Hero */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  padding: 7rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: end;
+  width: 100%;
+}
+.hero-img { display: flex; justify-content: center; }
+.hero-img img {
+  width: 18rem;
+  filter: drop-shadow(0 30px 55px rgba(60, 40, 10, 0.3));
+  object-fit: contain;
+  object-position: bottom;
+}
+.hero-text h1 {
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  margin-bottom: 1rem;
+}
+.hero-title {
+  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+  color: hsla(30, 15%, 12%, 0.9);
+  max-width: 36rem;
+  margin-bottom: 0.75rem;
+  font-family: 'Cormorant Garamond', 'Tajawal', serif;
+}
+html[lang="ar"] .hero-title { font-family: 'Tajawal', serif; }
+.hero-experience {
+  font-size: 0.85rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin: 1rem 0 2rem;
+}
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+@media (min-width: 768px) {
+  .hero-grid { grid-template-columns: 7fr 5fr; gap: 2.5rem; }
+  .hero-img { order: 2; justify-content: flex-end; }
+  .hero-img img { width: 100%; max-height: 720px; }
+  .hero-text { order: 1; }
+}
+
+/* Sections */
+.section { padding: 6rem 0; position: relative; }
+.section-head { max-width: 36rem; margin: 0 auto 3.5rem; text-align: center; }
+.section-head h2 {
+  font-size: clamp(1.85rem, 4vw, 3rem);
+  margin: 0.5rem 0 1rem;
+}
+.section-head .gold-divider { margin: 1rem auto 0; }
+
+/* Services */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: hsla(38, 60%, 42%, 0.2);
+  border: 1px solid hsla(38, 60%, 42%, 0.2);
+}
+.service-card {
+  background: hsla(40, 30%, 97%, 0.9);
+  padding: 2rem;
+  transition: background 0.2s;
+}
+.service-card:hover { background: var(--bg); }
+.service-num {
+  color: var(--primary);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+}
+.service-card h3 { font-size: 1.25rem; margin-bottom: 0.6rem; }
+.service-card p { color: var(--muted); font-size: 0.95rem; }
+@media (min-width: 640px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .services-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+/* Gallery */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.gallery-grid a {
+  display: block;
+  border: 1px solid hsla(38, 60%, 42%, 0.25);
+  overflow: hidden;
+  border-radius: 4px;
+  transition: border-color 0.2s, transform 0.4s;
+  background: hsla(40, 30%, 97%, 0.6);
+}
+.gallery-grid a:hover { border-color: var(--primary); }
+.gallery-grid img { transition: transform 0.5s ease; width: 100%; }
+.gallery-grid a:hover img { transform: scale(1.03); }
+@media (min-width: 640px) { .gallery-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .gallery-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+/* Testimonials */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+.review {
+  position: relative;
+  background: hsla(40, 30%, 97%, 0.9);
+  border: 1px solid hsla(38, 60%, 42%, 0.2);
+  padding: 2rem;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+.review-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.review-num {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.stars { color: var(--primary); font-size: 0.9rem; letter-spacing: 0.1em; font-family: 'Inter', 'Segoe UI Symbol', 'Apple Color Emoji', system-ui, sans-serif; }
+.review-num { font-family: 'Inter', system-ui, sans-serif; }
+.review-quote {
+  font-family: 'Cormorant Garamond', 'Tajawal', serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+html[lang="ar"] .review-quote { font-family: 'Tajawal', serif; font-weight: 400; }
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid hsla(38, 60%, 42%, 0.2);
+}
+.author-avatar {
+  width: 2.5rem; height: 2.5rem;
+  border-radius: 50%;
+  background: hsla(38, 60%, 42%, 0.15);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.author-name { font-size: 0.9rem; font-weight: 500; }
+.author-meta { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+@media (min-width: 768px) { .reviews-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+/* Location */
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+.location-info > div { margin-bottom: 2.5rem; }
+.location-info h3 {
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+.hours-list { list-style: none; }
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid hsla(38, 25%, 82%, 0.5);
+  font-size: 0.95rem;
+}
+.location-map {
+  border: 1px solid hsla(38, 60%, 42%, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+  min-height: 360px;
+}
+.location-map iframe { width: 100%; height: 100%; min-height: 360px; border: 0; display: block; }
+@media (min-width: 768px) { .location-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid hsla(38, 60%, 42%, 0.2);
+  padding: 2.5rem 0;
+  background: hsla(40, 30%, 97%, 0.9);
+}
+.site-footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+.site-footer p { color: var(--muted); font-size: 0.875rem; }
+.footer-links { display: flex; gap: 0.75rem; align-items: center; }
+.icon-link {
+  display: inline-flex;
+  width: 2.25rem; height: 2.25rem;
+  align-items: center; justify-content: center;
+  color: var(--muted);
+  border-radius: 50%;
+}
+.icon-link:hover { color: var(--primary); }
+.icon-link svg { width: 1.1rem; height: 1.1rem; }
+@media (min-width: 768px) {
+  .site-footer .container { flex-direction: row; justify-content: space-between; text-align: start; }
+}
+
+/* Floating WhatsApp */
+.wa-float {
+  position: fixed;
+  bottom: 1.25rem;
+  inset-inline-start: 1.25rem;
+  z-index: 50;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+.wa-float:hover { transform: scale(1.05); }
+.wa-float svg { width: 2rem; height: 2rem; }
+
+/* Lightbox via :target — entire backdrop is a link, click anywhere to close */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 14, 8, 0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+  cursor: zoom-out;
+  text-decoration: none;
+}
+.lightbox:target { display: flex; }
+.lightbox img {
+  max-height: 90vh;
+  max-width: 100%;
+  object-fit: contain;
+  cursor: default;
+  pointer-events: none;
+}
+.lightbox__close {
+  position: absolute;
+  top: 1.25rem;
+  inset-inline-end: 1.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.35);
+}
+
+/* Utility */
+[dir="rtl"] .ltr-num { direction: ltr; display: inline-block; unicode-bidi: embed; }
+
+/* ============================================
+   Parallax background — decorative, SEO-safe
+   ============================================ */
+.parallax-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--bg);
+  pointer-events: none;
+}
+.parallax-bg__layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: translate3d(0, 0, 0) scale(1.08);
+  transition: opacity 0.7s ease-out;
+  will-change: transform, opacity;
+}
+.parallax-bg__wash {
+  position: absolute;
+  inset: 0;
+  background: hsla(40, 30%, 97%, 0.55);
+}
+.parallax-bg__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    hsla(40, 30%, 97%, 0.3) 0%,
+    transparent 50%,
+    hsla(40, 30%, 97%, 0.7) 100%
+  );
+}
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-bg__layer {
+    transition: none;
+    transform: none !important;
+  }
+}
